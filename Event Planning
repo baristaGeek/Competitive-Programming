@@ -13,8 +13,8 @@ class Main {
 		int B = scanner.nextInt();
 		int H = scanner.nextInt();
 		int W = scanner.nextInt();
-		int [] priceArray = new int [H];
-		int [] availableBeds = new int [W];
+		int[] priceArray = new int[H];
+		int[] availableBeds = new int[W];
 		int cheapestStay = 999999999;
 		for (int i=0; i<H; i++){
 			priceArray[i] = scanner.nextInt();
@@ -28,7 +28,7 @@ class Main {
 			}
 
 		}
-		
+		scanner.nextLine();
 		if (cheapestStay != 999999999){
 			System.out.println(cheapestStay);
 		}else{
