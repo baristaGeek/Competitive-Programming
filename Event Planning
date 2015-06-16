@@ -1,5 +1,7 @@
 import java.util.*;
 
+//ACCEPTED BY UVA
+
 class Main {
 
 	public static void main(String[] args) {
