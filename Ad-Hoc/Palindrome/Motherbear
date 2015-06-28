@@ -1,0 +1,40 @@
+import java.util.*;
+
+//ACCEPTED BY UVA
+
+	class Main {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		while (scanner.hasNextLine()){
+			String phrase = scanner.nextLine();
+			if (!phrase.equals("DONE")){
+				System.out.println(solve(phrase));
+			}else{
+				break;
+			}
+		}
+
+	}
+	static String solve (String phrase){
+		
+		//phrase.replaceAll("?", "");
+		phrase = phrase.replaceAll("\\s","");
+		//System.out.println(phrase);
+		phrase = phrase.replaceAll("\\W","");
+		//System.out.println(phrase);
+		phrase = phrase.toLowerCase();
+		//System.out.println(phrase);
+		
+		String solution = "You won't be eaten!";
+		
+		for (int i=0; i<phrase.length()/2; i++){
+			if (phrase.charAt(i) != phrase.charAt(phrase.length()-1-i)){
+				solution = "Uh oh..";
+				break;
+			}
+		}
+		
+		return solution;
+	}
+}
