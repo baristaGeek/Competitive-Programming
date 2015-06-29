@@ -1,0 +1,142 @@
+import java.util.*;
+
+	class Main {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		while (scanner.hasNextLine()){
+			String input = scanner.next();
+			if (!input.equals("0")){
+				//scanner.nextLine();
+				System.out.println(solve(input));
+				//scanner.nextLine();
+			}/*else{
+				//scanner.nextLine();
+				break;
+			}*/
+			//scanner.nextLine();
+		}
+		scanner.nextLine();
+	}
+	static String solve (String input){
+		String answer = "Printing order for " + input + " pages:";
+		int pages = Integer.parseInt(input);
+		
+		int blankPages = 4 - (pages%4);
+		if (pages%4 == 0){
+			blankPages = 0;
+		}
+		
+
+
+		int sheetSides = 0;
+		if ((pages % 4 == 0)){
+			sheetSides = (pages/2);
+			
+			int front1 = pages;
+			int front2 = 1;
+			int back1 = 2;
+			int back2 = pages-1;
+			
+			for (int i=0; i<(sheetSides/2); i++){
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
+				front1 -= 2;
+				front2 += 2;
+				back1 += 2;
+				back2 -= 2;
+			}
+			
+		}if ((pages % 4 == 1) && (pages != 1)){
+			sheetSides = (pages/2) + blankPages - 1;
+			int front1 = pages-1; //used in sheet3
+			int front2 = 5;
+			int back1 = 6;
+			int back2 = pages-2;
+			
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+			answer += "\r\n";
+			answer += "Sheet 1, back : 2, Blank";
+			answer += "\r\n";
+			answer += "Sheet 2, front: Blank, 3";
+			answer += "\r\n";
+			answer += "Sheet 2, back : 4, " + pages;
+			
+			for (int i=2; i<(sheetSides/2); i++){
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
+				front1 -= 2;
+				front2 += 2;
+				back1 += 2;
+				back2 -= 2;	
+			}
+			
+		}if ((pages % 4 == 2) && (pages != 2)){
+			sheetSides = (pages/2) + 1;
+			int front1 = pages; //used in sheet 2
+			int front2 = 3;
+			int back1= 4;
+			int back2 = pages-1;
+			
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+			answer += "\r\n";
+			answer += "Sheet 1, back : 2, Blank";
+			
+			for (int i=1; i<(sheetSides/2); i++){
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
+				front1 -= 2;
+				front2 += 2;
+				back1 += 2;
+				back2 -= 2;					
+			}
+		}if ((pages % 4 == 3) && (pages != 3)){
+			sheetSides = (pages/2) + blankPages;
+			int front1 = pages-1; //used in sheet 2, not sheet 1
+			int front2 = 3;
+			int back1 = 4;
+			int back2 = pages-2;
+			
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+			answer += "\r\n";
+			answer += "Sheet 1, back : 2, "+ pages;
+			
+			for (int i=1; i<(sheetSides/2); i++){
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
+				answer += "\r\n";
+				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
+				front1 -= 2;
+				front2 += 2;
+				back1 += 2;
+				back2 -= 2;				
+			}
+		}
+		if (pages == 1){
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+		}if (pages == 2){
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+			answer += "\r\n";
+			answer += "Sheet 1, back : 2, Blank";
+		}if (pages == 3){
+			answer += "\r\n";
+			answer += "Sheet 1, front: Blank, 1";
+			answer += "\r\n";
+			answer += "Sheet 1, back : 2, 3";
+		}
+
+		
+		return answer;
+	}
+}
