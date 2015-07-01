@@ -1,24 +1,25 @@
 import java.util.*;
 
-//WRONG ANSWER IN UVA. ALL TEST CASES IN UDEBUG CORRECT. 
+//ACCEPTED BY UVA
 
 	class Main {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
 		while (scanner.hasNextLine()){
-			String input = scanner.next();
+			String input = scanner.nextLine();
 			if (!input.equals("0")){
 				//scanner.nextLine();
 				System.out.println(solve(input));
 				//scanner.nextLine();
-			}/*else{
+			}else{
 				//scanner.nextLine();
 				break;
-			}*/
+			}
 			//scanner.nextLine();
+			//input = scanner.nextLine();
 		}
-		scanner.nextLine();
+		//scanner.nextLine();
 	}
 	static String solve (String input){
 		String answer = "Printing order for " + input + " pages:";
@@ -41,9 +42,9 @@ import java.util.*;
 			int back2 = pages-1;
 			
 			for (int i=0; i<(sheetSides/2); i++){
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
 				front1 -= 2;
 				front2 += 2;
@@ -58,19 +59,19 @@ import java.util.*;
 			int back1 = 6;
 			int back2 = pages-2;
 			
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, back : 2, Blank";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 2, front: Blank, 3";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 2, back : 4, " + pages;
 			
 			for (int i=2; i<(sheetSides/2); i++){
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
 				front1 -= 2;
 				front2 += 2;
@@ -85,15 +86,15 @@ import java.util.*;
 			int back1= 4;
 			int back2 = pages-1;
 			
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, back : 2, Blank";
 			
 			for (int i=1; i<(sheetSides/2); i++){
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
 				front1 -= 2;
 				front2 += 2;
@@ -107,15 +108,15 @@ import java.util.*;
 			int back1 = 4;
 			int back2 = pages-2;
 			
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, back : 2, "+ pages;
 			
 			for (int i=1; i<(sheetSides/2); i++){
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", front: " + front1 + ", " + front2;
-				answer += "\r\n";
+				answer += "\n";
 				answer += "Sheet " + (i+1) + ", back : " + back1 + ", " + back2;	
 				front1 -= 2;
 				front2 += 2;
@@ -124,17 +125,17 @@ import java.util.*;
 			}
 		}
 		if (pages == 1){
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
 		}if (pages == 2){
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, back : 2, Blank";
 		}if (pages == 3){
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, front: Blank, 1";
-			answer += "\r\n";
+			answer += "\n";
 			answer += "Sheet 1, back : 2, 3";
 		}
 
