@@ -1,0 +1,72 @@
+ import java.util.*;
+ import java.lang.*;
+
+    class Main {
+    
+    //TIME-LIMIT EXCEEDED
+    //ALL TEST CASES CORRECT
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		int T = scanner.nextInt();
+		for (int i=0; i<T; i++){
+			String word = scanner.next();
+			char [] list = word.toCharArray();
+			System.out.println((getAllPermutations(list)));
+		}
+
+	}
+	static String orderWord (char [] word){
+		String solution = "";
+		Arrays.sort(word);
+		solution = new String (word);
+		return solution;
+	}
+	static boolean nextPermutation (char [] array){
+	    // Find longest non-increasing suffix
+	    int i = array.length - 1;
+	    while (i > 0 && array[i - 1] >= array[i])
+	        i--;
+	    // Now i is the head index of the suffix
+	    
+	    // Are we at the last permutation already?
+	    if (i <= 0)
+	        return false;
+	    
+	    // Let array[i - 1] be the pivot
+	    // Find rightmost element that exceeds the pivot
+	    int j = array.length - 1;
+	    while (array[j] <= array[i - 1])
+	        j--;
+	    // Now the value array[j] will become the new pivot
+	    // Assertion: j >= i
+	    
+	    // Swap the pivot with j
+	    char temp = array[i - 1];
+	    array[i - 1] = array[j];
+	    array[j] = temp;
+	    
+	    // Reverse the suffix
+	    j = array.length - 1;
+	    while (i < j) {
+	        temp = array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
+	        i++;
+	        j--;
+	    }
+	    
+	    // Successfully computed the next permutation
+	    return true;
+	}
+	static String getAllPermutations(char [] array){
+		String permutations = "";
+		Arrays.sort(array);
+		do{
+			permutations += new String(array);
+			permutations += "\n";
+		}while (nextPermutation(array));
+		permutations = permutations.trim();
+		return permutations; 
+	}
+}
