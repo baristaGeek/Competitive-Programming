@@ -1,0 +1,80 @@
+import java.io.*;
+class expertEnough {
+
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter pr = new PrintWriter (new BufferedWriter(new OutputStreamWriter(System.out)));
+		String firstLine = (br.readLine());
+		String [] splittedFirstLine = firstLine.split("\\s+");
+		int T = 0;
+		if (!splittedFirstLine[0].equals("")){
+			T = Integer.parseInt(splittedFirstLine[0]);
+		}else{
+			T = Integer.parseInt(splittedFirstLine[1]);
+		}
+		for (int i=0; i<T; i++){
+			int D = 0;
+			String DLine = (br.readLine());
+			String [] splitD = DLine.split("\\s+");
+			if (!splitD[0].equals("")){
+				D = Integer.parseInt(splitD[0]);
+			}else{
+				D = Integer.parseInt(splitD[1]);
+			}
+			
+			String [] makerArray = new String [D];
+			int [] LArray = new int [D];
+			int [] HArray = new int [D];
+			for (int j=0; j<D; j++){ //Auto-maker info
+				String line = br.readLine();
+				String [] split = line.split("\\s+");
+				
+				if (!split[0].equals("")){
+					makerArray[j] = split[0];
+					LArray [j] = Integer.parseInt(split[1]);
+					HArray [j] = Integer.parseInt(split[2]);	
+				}else{
+					makerArray[j] = split[1];
+					LArray [j] = Integer.parseInt(split[2]);
+					HArray [j] = Integer.parseInt(split[3]);
+				}
+
+			}
+			int Q = 0;
+			String QLine = br.readLine();
+			//System.out.println("Q: "+ Q);
+			int [] queryArray = new int [Q];
+			for (int j = 0; j<Q; j++){ //Query info
+				queryArray[i] = Integer.parseInt(br.readLine());
+				pr.println(solve(makerArray,LArray, HArray, queryArray[i]));
+			}
+			//pr.println(solve(makerArray, LArray, HArray, queryArray));
+			pr.println(" ");
+		}
+		pr.close();
+	}
+	static String solve(String [] makerArray, int[] LArray, int[] HArray, int query){
+		String maker = "UNDETERMINED";
+		int satisfiedQueryCount = 0; 
+		//System.out.println(query);
+		
+		//for (int i=0; i<QArray.length; i++){
+			//int currentPrice = QArray[i];
+			for (int j= 0; j<LArray.length; j++){
+				if (query >= LArray[j] && query <= HArray[j]){
+					satisfiedQueryCount++;
+					//System.out.println(satisfiedQueryCount);
+					maker = makerArray[j];
+					//System.out.println(maker);
+					//break;
+				}if (satisfiedQueryCount > 1){
+					maker = "UNDETERMINED";
+					break;
+				}
+			}
+		//}
+		
+		return maker;
+	}
+
+}
